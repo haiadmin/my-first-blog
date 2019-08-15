@@ -1,11 +1,14 @@
-<div>
-    <h1><a href="#">Quoc Hai Blog</a></h1>
-</div>
 
+{% extends 'blog/base.html' %}
+
+{% block content %}
 {% for post in hai123 %}
-    <div>
-        <p>Published: {{post.published_date}}</p>
-        <h2><a href="">{{post.title}}</a></h2>
-        <p>{{post.text|linebreaksbr }}</p>
+    <div class="post">
+        <div class="date">
+            <p>published: {{ post.published_date }}</p>
+        </div>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
     </div>
 {% endfor %}
+{% endblock %}           
